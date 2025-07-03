@@ -1,4 +1,4 @@
-import { Body, Controller, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
   ForgetPasswordDTO,
@@ -6,17 +6,19 @@ import {
   RegisterDTO,
   VerifyAccountDTO,
 } from './dtos';
+import { AuthGuard } from 'src/common/decorators/auth-guard.decorator';
+import { AuthRequest } from 'src/common/types';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('/login')
+  @Post('login')
   login(@Body() dto: LoginDTO) {
     return this.authService.login(dto);
   }
 
-  @Post('/register')
+  @Post('register')
   register(@Body() dto: RegisterDTO) {
     return this.authService.register(dto);
   }
@@ -29,5 +31,11 @@ export class AuthController {
   @Patch('verify-account')
   verifyAccount(@Body() dto: VerifyAccountDTO) {
     return this.authService.verifyAccount(dto);
+  }
+
+  @Get('me')
+  @AuthGuard()
+  getMe(@Request() req: AuthRequest) {
+    return this.authService.getMe(req.user.id);
   }
 }

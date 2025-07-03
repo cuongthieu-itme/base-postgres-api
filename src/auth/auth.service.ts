@@ -8,6 +8,7 @@ import {
   LoginDTO,
   RegisterDTO,
   VerifyAccountDTO,
+  GetMeResponseDTO,
 } from './dtos';
 import { TokenService } from 'src/common/token/token.service';
 import { UserService } from 'src/user/user.service';
@@ -90,5 +91,10 @@ export class AuthService {
       throw new NotFoundException('Code not match with any user');
     }
     await this.userService.updateVerificationState(user.id, true);
+  }
+
+  async getMe(userId: number): Promise<GetMeResponseDTO> {
+    const user = await this.userService.findUserById(userId);
+    return new GetMeResponseDTO(user);
   }
 }

@@ -48,7 +48,7 @@ export function setupSwagger(app: INestApplication): void {
       showRequestDuration: true,
     },
     customfavIcon: 'https://nestjs.com/img/logo_text.svg',
-    customSiteTitle: 'Ecommerce API Documentation',
+    customSiteTitle: 'Workflow API Documentation',
     customCss: `
       .swagger-ui .topbar { display: none }
       .swagger-ui .info { margin: 50px 0 }

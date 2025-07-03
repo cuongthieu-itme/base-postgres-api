@@ -42,7 +42,7 @@ Hệ thống API.
 
 ```bash
 git clone <repository-url>
-cd ecommerce-api
+cd workflow-api
 ```
 
 ### 2. Cài đặt dependencies

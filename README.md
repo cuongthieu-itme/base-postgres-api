@@ -99,8 +99,8 @@ pnpm run start:prod
 pnpm run start:debug
 ```
 
-Ứng dụng sẽ chạy tại: `http://localhost:3000`
-API endpoints: `http://localhost:3000/api`
+Ứng dụng sẽ chạy tại: `http://localhost:8080`
+API endpoints: `http://localhost:8080/api`
 
 ## ⚙️ Cấu hình môi trường
 
@@ -108,7 +108,7 @@ API endpoints: `http://localhost:3000/api`
 
 | Biến | Mô tả | Ví dụ |
 |------|-------|-------|
-| `APP_PORT` | Port chạy ứng dụng | `3000` |
+| `APP_PORT` | Port chạy ứng dụng | `8080` |
 | `DATABASE_URL` | Kết nối PostgreSQL | `postgresql://user:pass@localhost:5432/db` |
 | `REDIS_HOST` | Redis host | `localhost` |
 | `REDIS_PORT` | Redis port | `6379` |

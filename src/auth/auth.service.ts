@@ -6,7 +6,7 @@ import {
 import {
   ForgetPasswordDTO,
   LoginDTO,
-  SignupDTO,
+  RegisterDTO,
   VerifyAccountDTO,
 } from './dtos';
 import { TokenService } from 'src/common/token/token.service';
@@ -14,7 +14,7 @@ import { UserService } from 'src/user/user.service';
 import {
   ForgetPasswordNotification,
   LoginNotification,
-  SignupNotification,
+  RegisterNotification,
 } from './notification-decorator';
 import { InjectQueue } from '@nestjs/bullmq';
 import { QueueKeys } from 'src/queue/queue-keys.constant';
@@ -28,16 +28,16 @@ export class AuthService {
     private readonly userService: UserService,
     @InjectQueue(QueueKeys.LoginEmailQueue)
     public readonly loginEmailQueueService: Queue,
-    @InjectQueue(QueueKeys.SignupEmailQueue)
-    public readonly signupEmailQueueService: Queue,
+    @InjectQueue(QueueKeys.RegisterEmailQueue)
+    public readonly registerEmailQueueService: Queue,
     @InjectQueue(QueueKeys.ForgetPasswordEmailQueue)
     public readonly forgetPasswordEmailQueueService: Queue,
     @InjectQueue(QueueKeys.VerifyAccountEmailQueue)
     public readonly verifyAccountEmailQueueService: Queue,
   ) {}
 
-  @SignupNotification()
-  async signup(dto: SignupDTO) {
+  @RegisterNotification()
+  async register(dto: RegisterDTO) {
     const user = await this.userService.createUser(dto);
     const accessToken = await this.tokenService.decodeAuthToken({
       userId: user.id,

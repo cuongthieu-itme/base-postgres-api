@@ -6,12 +6,12 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
 import { SEND_EMAIL_NOTIFICATION } from 'src/notification/notification-events.constant';
 import { QueueKeys } from '../queue-keys.constant';
 
-export class SignupEmailQueuePayloadDTO {
+export class RegisterEmailQueuePayloadDTO {
   constructor(public email: string) {}
 }
 
-@Processor(QueueKeys.SignupEmailQueue)
-export class SignupEmailQueueProcessorService extends WorkerHost {
+@Processor(QueueKeys.RegisterEmailQueue)
+export class RegisterEmailQueueProcessorService extends WorkerHost {
   constructor(
     private readonly userService: UserService,
     private readonly eventEmitter: EventEmitter2,
@@ -19,7 +19,7 @@ export class SignupEmailQueueProcessorService extends WorkerHost {
     super();
   }
 
-  async process({ data }: Job<SignupEmailQueuePayloadDTO>): Promise<any> {
+  async process({ data }: Job<RegisterEmailQueuePayloadDTO>): Promise<any> {
     const user = await this.userService.findUserByEmail(data.email);
     const payload = new SendEmailDTO(
       user.email,

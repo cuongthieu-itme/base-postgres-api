@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import {
   ForgetPasswordDTO,
   LoginDTO,
-  SignupDTO,
+  RegisterDTO,
   VerifyAccountDTO,
 } from './dtos';
 
@@ -16,9 +16,9 @@ export class AuthController {
     return this.authService.login(dto);
   }
 
-  @Post('/signup')
-  signup(@Body() dto: SignupDTO) {
-    return this.authService.signup(dto);
+  @Post('/register')
+  register(@Body() dto: RegisterDTO) {
+    return this.authService.register(dto);
   }
 
   @Patch('forget-password')

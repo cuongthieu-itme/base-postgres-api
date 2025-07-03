@@ -3,7 +3,7 @@ import { LoginEmailQueueProcessorService } from './auth-queue-services/login-ema
 import { UserModule } from 'src/user/user.module';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { SignupEmailQueueProcessorService } from './auth-queue-services/signup-email-queue-processor.service';
+import { RegisterEmailQueueProcessorService } from './auth-queue-services/register-email-queue-processor.service';
 import { ForgetPasswordEmailQueueProcessorService } from './auth-queue-services/forget-password-email-queue-processor.service';
 import { VerifyAccountEmailQueueProcessorService } from './auth-queue-services/verify-account-email-queue-processor.service';
 
@@ -23,7 +23,7 @@ import { VerifyAccountEmailQueueProcessorService } from './auth-queue-services/v
   ],
   providers: [
     LoginEmailQueueProcessorService,
-    SignupEmailQueueProcessorService,
+    RegisterEmailQueueProcessorService,
     ForgetPasswordEmailQueueProcessorService,
     VerifyAccountEmailQueueProcessorService,
   ],

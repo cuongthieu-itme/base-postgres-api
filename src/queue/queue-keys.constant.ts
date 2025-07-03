@@ -1,6 +1,6 @@
 export enum QueueKeys {
   'LoginEmailQueue' = 'LoginEmailQueue',
-  'SignupEmailQueue' = 'SignupEmailQueue',
+  'RegisterEmailQueue' = 'RegisterEmailQueue',
   'ForgetPasswordEmailQueue' = 'ForgetPasswordEmailQueue',
   'VerifyAccountEmailQueue' = 'VerifyAccountEmailQueue',
 }

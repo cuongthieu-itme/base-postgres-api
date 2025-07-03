@@ -11,7 +11,8 @@ import {
 import { CategoryService } from './category.service';
 import { CreateCategoryDTO, UpdateCategoryDTO } from './dtos';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
-import { AuthGuard } from 'src/common/decorators';
+import { AuthGuard, PaginationQuery } from 'src/common/decorators';
+import { IPaginationQuery } from 'src/common/types';
 
 @ApiTags('Categories')
 @AuthGuard()
@@ -32,8 +33,8 @@ export class CategoryController {
   @ApiOperation({
     summary: 'Get all categories',
   })
-  findAllCategories() {
-    return this.categoryService.findAllCategories();
+  findAllCategories(@PaginationQuery() { limit, page }: IPaginationQuery) {
+    return this.categoryService.findAllCategories(page, limit);
   }
 
   @Get(':id')

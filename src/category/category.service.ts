@@ -24,10 +24,14 @@ export class CategoryService {
     });
   }
 
-  async findAllCategories() {
-    return this.prismaService.category.findMany({
-      orderBy: { createdAt: 'desc' },
+  async findAllCategories(page: number, limit: number) {
+    const data = await this.prismaService.category.findMany({
+      orderBy: { id: 'desc' },
+      skip: limit * page,
+      take: limit,
     });
+    const total = await this.prismaService.category.count();
+    return { data, page, limit, total };
   }
 
   async findCategoryById(id: number) {
@@ -49,10 +53,8 @@ export class CategoryService {
   }
 
   async updateCategoryById(id: number, dto: UpdateCategoryDTO) {
-    // Check if category exists
     await this.findCategoryById(id);
 
-    // Check if name is being updated and doesn't conflict with existing category
     if (dto.name) {
       const existingCategory = await this.findCategoryByName(dto.name);
       if (existingCategory && existingCategory.id !== id) {
@@ -67,7 +69,6 @@ export class CategoryService {
   }
 
   async deleteCategoryById(id: number) {
-    // Check if category exists
     await this.findCategoryById(id);
 
     return this.prismaService.category.delete({

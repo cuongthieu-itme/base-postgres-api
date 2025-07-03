@@ -23,8 +23,8 @@ export class ForgetPasswordEmailQueueProcessorService extends WorkerHost {
     const user = await this.userService.findUserByEmail(data.email);
     const sendEmailPayload = new SendEmailDTO(
       user.email,
-      `Forget Password Process`,
-      `After Changing Password You Should Verify Your Account. Your Verification Code is : ${user.verifiedToken}`,
+      `Forget password process`,
+      `After changing password you should verify your account. Your verification code is : ${user.verifiedToken}`,
     );
     this.eventEmitter.emit(SEND_EMAIL_NOTIFICATION, sendEmailPayload);
   }

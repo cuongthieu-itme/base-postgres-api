@@ -19,7 +19,7 @@ export class UserService {
   async createUser(dto: CreateUserDTO) {
     const duplicatedEmailAddress = await this.findUserByEmail(dto.email);
     if (duplicatedEmailAddress) {
-      throw new ConflictException('User Duplicated Email Address');
+      throw new ConflictException('User duplicated email address');
     }
     const passwordHashed = await this.hashService.encode(dto.password);
     const verificationCode = this.tokenService.generateVerificationToken();
@@ -75,7 +75,7 @@ export class UserService {
     );
     if (!isPasswordMatching) {
       throw new NotFoundException(
-        'User Is Not Found With This Email Address And Password',
+        'User is not found with this email address and password',
       );
     }
     return user;
@@ -84,7 +84,7 @@ export class UserService {
   async findUserByEmail(email: string, throwError: boolean = false) {
     const user = await this.prismaService.user.findUnique({ where: { email } });
     if (!user && throwError) {
-      throw new NotFoundException('User Not Found With This Email Address');
+      throw new NotFoundException('User not found with this email address');
     }
     return user;
   }
@@ -92,7 +92,7 @@ export class UserService {
   async findUserById(id: number) {
     const user = await this.prismaService.user.findUnique({ where: { id } });
     if (!user) {
-      throw new NotFoundException('User Not Found With This Id');
+      throw new NotFoundException('User not found with this id');
     }
     return user;
   }

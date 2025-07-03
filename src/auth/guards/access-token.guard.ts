@@ -33,7 +33,7 @@ export class AccessTokenGuard implements CanActivate {
       verifiedToken.userId,
     );
     if (!loggedInUser.isVerifiedAccount) {
-      throw new UnauthorizedException('You Need To Verify Your Account');
+      throw new UnauthorizedException('You need to verify your account');
     }
     request.user = loggedInUser;
     return true;

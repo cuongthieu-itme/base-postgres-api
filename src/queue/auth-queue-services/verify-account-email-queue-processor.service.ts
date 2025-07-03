@@ -25,8 +25,8 @@ export class VerifyAccountEmailQueueProcessorService extends WorkerHost {
     const user = await this.userService.findUserByEmail(data.email);
     const payload = new SendEmailDTO(
       user.email,
-      'Verified Your Account Successfully',
-      `${user.fullName} Your Account Verified At ${user.verifiedDate} Successfully`,
+      'Verified your account successfully',
+      `${user.fullName} your account verified at ${user.verifiedDate} successfully`,
     );
     this.eventEmitter.emit(SEND_EMAIL_NOTIFICATION, payload);
   }

@@ -3,10 +3,4 @@ export enum QueueKeys {
   'SignupEmailQueue' = 'SignupEmailQueue',
   'ForgetPasswordEmailQueue' = 'ForgetPasswordEmailQueue',
   'VerifyAccountEmailQueue' = 'VerifyAccountEmailQueue',
-  'CalculateVendorIncomeQueue' = 'CalculateVendorIncomeQueue',
-  'VendorIncomeEmailQueue' = 'VendorIncomeEmailQueue',
-  'SubmitCustomerOrderEmailQueue' = 'SubmitCustomerOrderEmailQueue',
-  'ChangeStatusReturnedOrderEmailQueue' = 'ChangeStatusReturnedOrderEmailQueue',
-  'CancelVendorIncomeEmailQueue' = 'CancelVendorIncomeEmailQueue',
-  'ReturnBackOrderTransactionEmailQueue' = 'ReturnBackOrderTransactionEmailQueue',
 }

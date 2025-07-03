@@ -7,7 +7,7 @@ export const SignupNotification = () => {
     descriptor.value = async function (...args) {
       const queue = this.signupEmailQueueService as Queue;
       const result = await originalMethod.apply(this, args);
-      queue.add('send-email', new SignupEmailQueuePayloadDTO(args.at(0).email));
+      queue.add('send-email', new SignupEmailQueuePayloadDTO(args[0].email));
       return result;
     };
     return descriptor;

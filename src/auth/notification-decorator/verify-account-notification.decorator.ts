@@ -9,7 +9,7 @@ export const VerifyAccountNotification = () => {
       const result = await originalMethod.apply(this, args);
       queue.add(
         'send-email',
-        new VerifyAccountEmailQueuePayloadDTO(args.at(0).email),
+        new VerifyAccountEmailQueuePayloadDTO(args[0].email),
       );
       return result;
     };
